@@ -40,19 +40,30 @@ BRG-AUG/
 │   ├── resize.py                          # Image resizing with letterboxing + YOLO label adjustment
 │   └── augmentation.py                    # Color-based augmentation (3x dataset generation)
 │
-├── training/                              # Model training scripts
-│   └── yolov5/                            # YOLOv5 training pipelines
-│       ├── train_baseline_yolov5.py       # Baseline training on BRG-AUG synthetic data
-│       ├── train_baseline_tsne.py         # Baseline training for t-SNE feature analysis
-│       ├── train_incomplete.py            # Training under incomplete data scenarios
-│       ├── train_sparse.py                # Training under sparse data scenarios (0–90%)
-│       └── validate_baseline.py           # Validate trained model on real test data
-│
-├── configs/                               # Model training configurations
-│   └── mmdet/                             # MMDetection config files
+├── training/                              # Model training & testing scripts
+│   ├── yolov5/                            # YOLOv5 training and evaluation
+│   │   ├── train_baseline_yolov5.py       # Baseline training on BRG-AUG synthetic data
+│   │   ├── train_baseline_tsne.py         # Baseline training for t-SNE feature analysis
+│   │   ├── train_incomplete.py            # Training under incomplete data scenarios
+│   │   ├── train_sparse.py                # Training under sparse data scenarios (0–90%)
+│   │   ├── test_baseline.py               # Test baseline model on real data
+│   │   ├── test_incomplete.py             # Test incomplete data models
+│   │   ├── test_sparse.py                 # Test sparse data models
+│   │   └── validate_baseline.py           # Validate trained model on real test data
+│   ├── yolov8/                            # YOLOv8 training and evaluation
+│   │   ├── train_baseline.py              # Baseline training
+│   │   ├── train_incomplete.py            # Training under incomplete data scenarios
+│   │   ├── train_sparse.py                # Training under sparse data scenarios
+│   │   ├── test_baseline.py               # Test baseline model
+│   │   ├── test_incomplete.py             # Test incomplete data models
+│   │   └── test_sparse.py                 # Test sparse data models
+│   └── mmdetection/                       # MMDetection config files
 │       ├── atss_custom.py                 # ATSS detector
+│       ├── cascade_rcnn_custom.py         # Cascade R-CNN detector
 │       ├── deformable_detr_custom.py      # Deformable DETR detector
 │       ├── dino_custom.py                 # DINO detector
+│       ├── faster_rcnn_custom.py          # Faster R-CNN detector
+│       ├── fcos_custom.py                 # FCOS detector
 │       ├── retinanet_custom.py            # RetinaNet detector
 │       ├── rtmdet_custom.py               # RTMDet detector
 │       ├── sparse_rcnn_custom.py          # Sparse R-CNN detector
@@ -82,7 +93,7 @@ BRG-AUG/
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/BRG-AUG.git
+git clone https://github.com/yasirijazgoraya/BRG-AUG.git
 cd BRG-AUG
 
 # Create a virtual environment (recommended)
@@ -153,31 +164,44 @@ python utils/yolo2json.py
 
 **YOLOv5 — Baseline training:**
 ```bash
-cd training/yolov5
-python train_baseline_yolov5.py
+python training/yolov5/train_baseline_yolov5.py
 ```
 
-**YOLOv5 — Sparse data experiments (0%, 30%, 60%, 90% synthetic):**
+**YOLOv8 — Baseline training:**
+```bash
+python training/yolov8/train_baseline.py
+```
+
+**Sparse data experiments (0%, 30%, 60%, 90% synthetic):**
 ```bash
 python training/yolov5/train_sparse.py
+python training/yolov8/train_sparse.py
 ```
 
-**YOLOv5 — Incomplete data experiments (25%, 50%, 75% normal class):**
+**Incomplete data experiments (25%, 50%, 75% normal class):**
 ```bash
 python training/yolov5/train_incomplete.py
+python training/yolov8/train_incomplete.py
 ```
 
-**YOLOv5 — Validate on real test data:**
+**Testing on real data:**
 ```bash
-python training/yolov5/validate_baseline.py
+python training/yolov5/test_baseline.py
+python training/yolov8/test_baseline.py
 ```
 
 **MMDetection-based detectors:**
 ```bash
-python tools/train.py configs/mmdet/atss_custom.py
-python tools/train.py configs/mmdet/dino_custom.py
-python tools/train.py configs/mmdet/yolox_custom.py
-# ... etc.
+python tools/train.py training/mmdetection/faster_rcnn_custom.py
+python tools/train.py training/mmdetection/cascade_rcnn_custom.py
+python tools/train.py training/mmdetection/fcos_custom.py
+python tools/train.py training/mmdetection/atss_custom.py
+python tools/train.py training/mmdetection/dino_custom.py
+python tools/train.py training/mmdetection/yolox_custom.py
+python tools/train.py training/mmdetection/rtmdet_custom.py
+python tools/train.py training/mmdetection/sparse_rcnn_custom.py
+python tools/train.py training/mmdetection/deformable_detr_custom.py
+python tools/train.py training/mmdetection/retinanet_custom.py
 ```
 
 > **Note:** Update `data_root` in config files and training scripts to match your local dataset paths.
