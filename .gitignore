@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data directories (proprietary data - do not commit)
+data/
+datasets/
+Fold_Datasets/
+sparse_train_data/
+D0/
+D1/
+D2/
+D3/
+train/
+valid/
+test/
+output/
+output_images*/
+
+# Blender files
+*.blend
+*.blend1
+assets/
+
+# Model weights & checkpoints
+*.pt
+*.pth
+*.onnx
+*.weights
+checkpoints/
+work_dirs/
+
+# Logs & experiment tracking
+*.log
+runs/
+wandb/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Rendered outputs (large)
+shot_log.csv
+
+# Evaluation outputs
+tsne_results/
+gradcam_results/
+*.npz
