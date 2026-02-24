@@ -289,7 +289,7 @@ If you find this work useful, please cite:
 ```bibtex
 @article{ijaz2026brgaug,
   title={{BRG-AUG}: Bridging the Reality Gap Between Synthetic and Real Samples for Semiconductor Load Station Visual Inspection},
-  author={ABC},
+  author={Anonymous},
   journal={Neural Computing and Applications},
   year={2026},
   publisher={Springer}
