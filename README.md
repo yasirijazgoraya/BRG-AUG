@@ -289,22 +289,14 @@ If you find this work useful, please cite:
 ```bibtex
 @article{ijaz2026brgaug,
   title={{BRG-AUG}: Bridging the Reality Gap Between Synthetic and Real Samples for Semiconductor Load Station Visual Inspection},
-  author={Ijaz, Yasir and Coleman, Sonya and Kerr, Dermot and Siddique, Nazmul and McAteer, Cormac and Baker, Bryan and Nguyen, Khoi},
+  author={ABC},
   journal={Neural Computing and Applications},
   year={2026},
   publisher={Springer}
 }
 ```
 
-## Authors
 
-- **Yasir Ijaz** — Ulster University ([Ijaz-Y@ulster.ac.uk](mailto:Ijaz-Y@ulster.ac.uk))
-- **Sonya Coleman** — Ulster University
-- **Dermot Kerr** — Ulster University
-- **Nazmul Siddique** — Ulster University
-- **Cormac McAteer** — Seagate Technology
-- **Bryan Baker** — Seagate Technology
-- **Khoi Nguyen** — Seagate Technology
 
 ## License
 
